@@ -1,0 +1,169 @@
+/* ==========================================================================
+   TRIKAL DARSHI — DESIGN TOKENS & CORE STYLES
+   Celestial Luxury Spiritual Aesthetic
+   ========================================================================== */
+
+:root {
+  /* Core Palette */
+  --color-midnight-navy: #090D1D;
+  --color-dark-indigo: #121A32;
+  --color-cosmic-violet: #30264D;
+  --color-deep-space: #050811;
+
+  /* Accent Metallics & Lights */
+  --color-antique-gold: #D7B46A;
+  --color-champagne-gold: #E9D5A0;
+  --color-warm-ivory: #F7F1E5;
+  --color-muted-lavender: #AAB0C5;
+  --color-dim-lavender: #6C7289;
+  --color-gold-glow: rgba(215, 180, 106, 0.28);
+  --color-gold-soft: rgba(215, 180, 106, 0.12);
+  --color-gold-border: rgba(215, 180, 106, 0.22);
+
+  /* Typography */
+  --font-serif-brand: 'Cinzel', serif;
+  --font-serif-editorial: 'Cormorant Garamond', 'Cinzel', serif;
+  --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono-num: 'Cinzel', 'Cormorant Garamond', serif;
+
+  /* Transitions */
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Strict Single-Screen Reset: Absolutely No Scroll */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--color-midnight-navy);
+  color: var(--color-warm-ivory);
+  font-family: var(--font-sans);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Selection */
+::selection {
+  background: rgba(215, 180, 106, 0.3);
+  color: #FFFFFF;
+}
+
+/* Keyframe Animations */
+@keyframes celestial-spin-cw {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes celestial-spin-ccw {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes corona-pulse {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scale(1);
+    filter: drop-shadow(0 0 45px rgba(233, 213, 160, 0.35)) drop-shadow(0 0 90px rgba(215, 180, 106, 0.2));
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.035);
+    filter: drop-shadow(0 0 65px rgba(233, 213, 160, 0.55)) drop-shadow(0 0 130px rgba(215, 180, 106, 0.32));
+  }
+}
+
+@keyframes golden-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(var(--hero-translate-y, -140px) + 20px));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(var(--hero-translate-y, -140px));
+  }
+}
+
+@keyframes countdown-fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(var(--countdown-translate-y, -185px) + 20px));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(var(--countdown-translate-y, -185px));
+  }
+}
+
+@keyframes ray-glow {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.reduced-motion * {
+  animation: none !important;
+  transition: none !important;
+}

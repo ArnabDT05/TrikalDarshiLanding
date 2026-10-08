@@ -1,0 +1,1420 @@
+/* ==========================================================================
+   TRIKAL DARSHI — SINGLE-SCREEN COMING SOON LAYOUT
+   Cinematic Luxury Celestial UI
+   ========================================================================== */
+
+/* Main Viewport Shell: Strictly 100vh / 100dvh, Zero Scroll */
+.app-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-midnight-navy);
+  color: var(--color-warm-ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   1. CONTINUOUS LOOPLESS VIDEO BACKGROUND
+   Seamless Dual-Track Crossfade with Cinematic Depth
+   ========================================================================== */
+
+.video-background-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  background-color: var(--color-midnight-navy);
+}
+
+/* Base Video Style for Both Tracks */
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: translate(-50%, -50%);
+  will-change: opacity;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active Video Track */
+.bg-video.video-visible {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Inactive Video Track (Buffered / Pre-faded) */
+.bg-video.video-hidden {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Cinematic Dark Indigo / Navy Veil to maintain luxury spiritual atmosphere */
+.video-cinematic-veil {
+  position: absolute;
+  inset: 0;
+  opacity: 0.8;
+  background:
+    radial-gradient(ellipse 85% 75% at 50% 50%, rgba(9, 13, 29, 0.38) 0%, rgba(18, 26, 50, 0.65) 60%, rgba(9, 13, 29, 0.92) 100%),
+    linear-gradient(180deg, rgba(7, 11, 24, 0.6) 0%, rgba(9, 13, 29, 0.2) 40%, rgba(9, 13, 29, 0.7) 100%);
+  z-index: 3;
+}
+
+/* Soft Center Focus Shield for Headline Readability */
+.video-center-shield {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 520px at 50% 48%, rgba(9, 13, 29, 0.42) 0%, rgba(9, 13, 29, 0.12) 65%, transparent 100%);
+  z-index: 4;
+}
+
+/* Deep Edge Vignetting */
+.video-edge-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 95% 95% at 50% 50%, transparent 48%, rgba(5, 7, 16, 0.75) 82%, rgba(3, 4, 10, 0.95) 100%);
+  z-index: 5;
+}
+
+/* ==========================================================================
+   2. SINGLE-SCREEN VIEWPORT STAGE (3 DISTINCT ZONES)
+   ========================================================================== */
+
+.single-screen-stage {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  max-height: 900px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   ZONE 1: TOP BRANDING
+   ========================================================================== */
+
+.brand-header {
+  width: 100%;
+  padding-top: clamp(14px, 2.2vh, 26px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+  animation: fade-in-up 1.2s var(--transition-smooth) forwards;
+}
+
+.brand-identity-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  width: auto;
+}
+
+/* Primary Brand Logo Lockup Image (TD Emblem + Trikal Darshi) */
+.brand-logo-image-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: clamp(230px, 18.5vw, 280px);
+  margin: 0 auto;
+  cursor: default;
+  transition: transform 0.5s var(--transition-smooth);
+}
+
+.brand-logo-image-box:hover {
+  transform: scale(1.03);
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 18px rgba(215, 180, 106, 0.42)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
+  transition: filter 0.5s var(--transition-smooth);
+}
+
+.brand-logo-image-box:hover .brand-logo-img {
+  filter:
+    drop-shadow(0 0 25px rgba(233, 213, 160, 0.62)) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
+}
+
+/* Tagline */
+.brand-tagline {
+  font-family: var(--font-sans);
+  font-size: clamp(9px, 0.75vw, 10.5px);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  color: var(--color-antique-gold);
+  text-transform: uppercase;
+  margin-right: -0.28em;
+  opacity: 0.85;
+  text-shadow: 0 0 12px rgba(215, 180, 106, 0.3);
+}
+
+/* ==========================================================================
+   ZONE 2: CENTRAL HERO TYPOGRAPHY
+   ========================================================================== */
+
+.hero-center-zone {
+  --hero-translate-y: -140px;
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+  margin-top: auto;
+  margin-bottom: auto;
+  transform: translateY(var(--hero-translate-y));
+  animation: hero-fade-in-up 1.4s var(--transition-smooth) 0.15s both;
+}
+
+/* Eyebrow: THE UNIVERSE HAS A MESSAGE FOR YOU */
+.hero-eyebrow-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: clamp(14px, 2.2vh, 22px);
+}
+
+.eyebrow-star {
+  color: var(--color-antique-gold);
+  font-size: 11px;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 6px var(--color-antique-gold));
+}
+
+.hero-eyebrow-text {
+  font-family: var(--font-sans);
+  font-size: clamp(10.5px, 0.85vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-antique-gold);
+  margin-right: -0.32em;
+  text-shadow: 0 0 12px rgba(215, 180, 106, 0.3);
+}
+
+/* Main Editorial Headline */
+.hero-headline {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(2.75rem, 5.8vw, 5.6rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--color-warm-ivory);
+  margin-bottom: clamp(18px, 2.8vh, 28px);
+  max-width: 960px;
+  text-shadow:
+    0 2px 24px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(247, 241, 229, 0.12);
+}
+
+.headline-lead {
+  display: inline;
+}
+
+.headline-tail {
+  display: inline;
+}
+
+/* Champagne Gold Accent on "Cosmic" */
+.headline-accent {
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(135deg, #FFF6E0 0%, #E9D5A0 40%, #D7B46A 80%, #C49B45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(215, 180, 106, 0.45));
+  display: inline-block;
+  padding: 0;
+}
+
+/* Supporting Copy Group */
+.hero-supporting-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.supporting-disciplines {
+  font-family: var(--font-sans);
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-champagne-gold);
+  margin-right: -0.22em;
+  opacity: 0.95;
+  text-shadow: 0 0 16px rgba(233, 213, 160, 0.25);
+}
+
+.supporting-subline {
+  font-family: var(--font-sans);
+  font-size: clamp(12.5px, 0.95vw, 14.5px);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  color: var(--color-muted-lavender);
+  max-width: 520px;
+}
+
+/* ==========================================================================
+   ZONE 3: BOTTOM COUNTDOWN TIMER & WAITLIST CTA
+   ========================================================================== */
+
+/* Cohesive container for Timer + CTA (Desktop: transparent contents, Mobile: cohesive flex cluster) */
+.portal-bottom-zone {
+  display: contents;
+}
+
+.countdown-zone {
+  --countdown-translate-y: clamp(-205px, -23vh, -170px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: clamp(38px, 5.5vh, 60px);
+  transform: translateY(var(--countdown-translate-y));
+  animation: countdown-fade-in-up 1.5s var(--transition-smooth) 0.3s both;
+}
+
+/* Eyebrow Label */
+.countdown-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(14px, 2vh, 20px);
+}
+
+.countdown-eyebrow-line {
+  width: clamp(24px, 3.5vw, 48px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(215, 180, 106, 0.4), transparent);
+}
+
+.countdown-eyebrow-text {
+  font-family: var(--font-sans);
+  font-size: clamp(10px, 0.78vw, 11.5px);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-antique-gold);
+  margin-right: -0.28em;
+  opacity: 0.9;
+}
+
+/* Units Cluster */
+.countdown-units-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 1.8vw, 26px);
+}
+
+/* Individual Unit */
+.countdown-unit-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(52px, 5.5vw, 76px);
+}
+
+.countdown-num-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(44px, 5.2vh, 62px);
+}
+
+.countdown-num {
+  font-family: var(--font-mono-num);
+  font-size: clamp(32px, 3.5vw, 46px);
+  font-weight: 500;
+  line-height: 1;
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-champagne-gold);
+  text-shadow:
+    0 0 22px rgba(215, 180, 106, 0.45),
+    0 2px 10px rgba(0, 0, 0, 0.85);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rolling Number Drum Styles */
+.rolling-num-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.02em;
+}
+
+.rolling-digit-box {
+  position: relative;
+  display: inline-block;
+  width: 0.62em;
+  height: 1.15em;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.rolling-digit-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+  line-height: 1;
+}
+
+.rolling-digit-static {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.rolling-digit-in {
+  animation: roll-digit-in 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.rolling-digit-out {
+  animation: roll-digit-out 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes roll-digit-in {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0.2;
+    filter: blur(0.6px);
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes roll-digit-out {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0.15;
+    filter: blur(0.6px);
+  }
+}
+
+.countdown-label {
+  font-family: var(--font-sans);
+  font-size: clamp(9.5px, 0.72vw, 11px);
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-dim-lavender);
+  margin-top: 6px;
+  margin-right: -0.24em;
+}
+
+/* Subtle Separators */
+.countdown-separator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  opacity: 0.35;
+}
+
+.separator-dot {
+  width: 3px;
+  height: 3px;
+  background-color: var(--color-antique-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--color-antique-gold);
+}
+
+.separator-line {
+  width: 1px;
+  height: 14px;
+  background: linear-gradient(180deg, transparent, var(--color-antique-gold), transparent);
+}
+
+/* Zero-State */
+.countdown-zero-state {
+  text-align: center;
+  padding: 12px 24px;
+  background: rgba(18, 26, 50, 0.4);
+  border: 1px solid var(--color-gold-border);
+  border-radius: 40px;
+  backdrop-filter: blur(8px);
+}
+
+.zero-state-title {
+  font-family: var(--font-serif-brand);
+  font-size: 14px;
+  letter-spacing: 0.24em;
+  color: var(--color-champagne-gold);
+}
+
+.zero-state-sub {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--color-muted-lavender);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   4. ATMOSPHERE & ACCESSIBILITY CONTROLS
+   ========================================================================== */
+
+.atmosphere-controls {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 25;
+}
+
+.atmosphere-btn {
+  background: rgba(18, 26, 50, 0.45);
+  border: 1px solid rgba(215, 180, 106, 0.2);
+  color: var(--color-muted-lavender);
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.atmosphere-btn:hover {
+  background: rgba(30, 42, 75, 0.65);
+  border-color: rgba(215, 180, 106, 0.45);
+  color: var(--color-warm-ivory);
+  box-shadow: 0 0 14px rgba(215, 180, 106, 0.22);
+  transform: scale(1.06);
+}
+
+.atmosphere-btn.active {
+  background: rgba(215, 180, 106, 0.18);
+  border-color: var(--color-antique-gold);
+  color: var(--color-champagne-gold);
+  box-shadow: 0 0 16px rgba(215, 180, 106, 0.3);
+}
+
+/* ==========================================================================
+   FLIPPING WORD SWAP (Componentry)
+   ========================================================================== */
+
+.flipping-word-swap-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  outline: none;
+  border-radius: 0.08em;
+  transition: filter 0.3s ease;
+}
+
+.flipping-word-swap-btn:focus-visible {
+  outline: 2px solid rgba(215, 180, 106, 0.4);
+  outline-offset: 4px;
+}
+
+.flipping-word-swap-grid {
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  perspective: 800px;
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+.flipping-word-swap-layer {
+  grid-column: 1;
+  grid-row: 1;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0;
+  white-space: pre;
+}
+
+/* Headline-specific styling for Trikal Darshi */
+.headline-swap {
+  vertical-align: baseline;
+  margin: 0 -0.02em;
+  padding: 0;
+  background: none;
+  -webkit-text-fill-color: initial;
+}
+
+.headline-swap .flipping-word-swap-grid {
+  padding: 0;
+  margin: 0;
+}
+
+.headline-swap span[data-flip-char],
+.headline-swap span[data-flip-word] {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(135deg, #FFF6E0 0%, #E9D5A0 40%, #D7B46A 80%, #C49B45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 22px rgba(215, 180, 106, 0.5));
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   WAITLIST CTA & CELESTIAL MODAL (Below Figure's Legs)
+   ========================================================================== */
+
+.waitlist-trigger-zone {
+  position: absolute;
+  bottom: clamp(62px, 9.8vh, 98px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: waitlist-fade-in-up 1.6s var(--transition-smooth) 0.5s both;
+}
+
+.waitlist-cta-btn {
+  background: linear-gradient(135deg, rgba(28, 22, 48, 0.58) 0%, rgba(14, 20, 38, 0.68) 100%);
+  border: 1px solid rgba(215, 180, 106, 0.38);
+  color: var(--color-warm-ivory);
+  padding: clamp(10px, 1.35vh, 13px) clamp(24px, 2.2vw, 34px);
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: clamp(11px, 0.88vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.55),
+    0 0 20px rgba(215, 180, 106, 0.12),
+    inset 0 1px 0 rgba(255, 246, 224, 0.22);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.waitlist-cta-btn .cta-sparkle {
+  color: var(--color-champagne-gold);
+  font-size: 11px;
+  filter: drop-shadow(0 0 6px rgba(215, 180, 106, 0.6));
+  transition: transform 0.4s ease;
+}
+
+.waitlist-cta-btn:hover {
+  background: linear-gradient(135deg, rgba(38, 30, 62, 0.70) 0%, rgba(20, 28, 52, 0.78) 100%);
+  border-color: rgba(215, 180, 106, 0.85);
+  color: #FFF6E0;
+  box-shadow:
+    0 6px 32px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(215, 180, 106, 0.35),
+    inset 0 1px 0 rgba(255, 246, 224, 0.45);
+  transform: translateY(-2px);
+}
+
+.waitlist-cta-btn:hover .cta-sparkle {
+  transform: scale(1.25) rotate(15deg);
+}
+
+.waitlist-cta-btn:active {
+  transform: translateY(0);
+}
+
+/* Modal Backdrop */
+.waitlist-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 17, 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+  animation: modal-fade-in 0.3s ease forwards;
+}
+
+/* Modal Card */
+.waitlist-modal-card {
+  position: relative;
+  background: linear-gradient(165deg, rgba(24, 20, 42, 0.95) 0%, rgba(9, 13, 29, 0.98) 100%);
+  border: 1px solid rgba(215, 180, 106, 0.35);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.85),
+    0 0 50px rgba(215, 180, 106, 0.16),
+    inset 0 1px 0 rgba(255, 246, 224, 0.15);
+  border-radius: 20px;
+  max-width: 480px;
+  width: 100%;
+  padding: clamp(28px, 4.5vh, 40px);
+  text-align: center;
+  animation: modal-card-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.waitlist-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  border: 0;
+  color: var(--color-muted-lavender);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.waitlist-close-btn:hover {
+  color: var(--color-warm-ivory);
+  background: rgba(215, 180, 106, 0.15);
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  margin-bottom: 24px;
+}
+
+.modal-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  color: var(--color-antique-gold);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.eyebrow-star {
+  font-size: 10px;
+  color: var(--color-champagne-gold);
+}
+
+.modal-title {
+  font-family: var(--font-serif-brand);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-warm-ivory);
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(247, 241, 229, 0.2);
+}
+
+.modal-subtitle {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-muted-lavender);
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-field-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.waitlist-input {
+  width: 100%;
+  background: rgba(9, 13, 29, 0.7);
+  border: 1px solid rgba(215, 180, 106, 0.28);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-warm-ivory);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.waitlist-input:focus {
+  border-color: var(--color-antique-gold);
+  box-shadow: 0 0 18px rgba(215, 180, 106, 0.25);
+  background: rgba(14, 20, 42, 0.85);
+}
+
+.waitlist-input::placeholder {
+  color: var(--color-dim-lavender);
+}
+
+.modal-submit-btn {
+  background: linear-gradient(135deg, #E9D5A0 0%, #D7B46A 60%, #C49B45 100%);
+  border: 0;
+  color: var(--color-deep-space);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(215, 180, 106, 0.3);
+  transition: all 0.3s ease;
+}
+
+.modal-submit-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 26px rgba(215, 180, 106, 0.45);
+  transform: translateY(-1px);
+}
+
+.modal-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.spin-animation {
+  animation: spin-pulse 1s linear infinite;
+}
+
+@keyframes spin-pulse {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.modal-error-text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  color: #ffb4a2;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.modal-disclaimer {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-dim-lavender);
+}
+
+.modal-success-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.success-icon-ring {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-antique-gold);
+  background: rgba(215, 180, 106, 0.15);
+  color: var(--color-champagne-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 24px rgba(215, 180, 106, 0.35);
+}
+
+.success-title {
+  font-family: var(--font-serif-brand);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-warm-ivory);
+}
+
+.success-desc {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-muted-lavender);
+  margin-bottom: 8px;
+}
+
+.success-email {
+  color: var(--color-champagne-gold);
+  font-weight: 500;
+}
+
+@keyframes waitlist-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-card-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   5. COMPREHENSIVE RESPONSIVE ENGINE (ALL MOBILE PHONES & TABLETS)
+   Guaranteed Zero Scrolling, Balanced Typography, and Cohesive Alignment
+   ========================================================================== */
+
+/* Shorter Desktop/Laptops (e.g. 1366 × 768 or browser window with devtools) */
+@media (min-width: 769px) and (max-height: 760px) {
+  .brand-header {
+    padding-top: 24px;
+  }
+
+  .brand-logo-image-box {
+    max-width: 215px;
+  }
+
+  .brand-identity-wrapper {
+    gap: 6px;
+  }
+
+  .hero-center-zone {
+    --hero-translate-y: -105px;
+  }
+
+  .hero-headline {
+    margin-bottom: 14px;
+  }
+
+  .countdown-zone {
+    --countdown-translate-y: -140px;
+    padding-bottom: 24px;
+  }
+
+  .countdown-eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .atmosphere-controls {
+    bottom: 16px;
+    right: 18px;
+  }
+}
+
+/* Very Short Desktop / Widescreen Compact */
+@media (min-width: 769px) and (max-height: 600px) {
+  .brand-header {
+    padding-top: 14px;
+  }
+
+  .brand-logo-image-box {
+    max-width: 170px;
+  }
+
+  .hero-center-zone {
+    --hero-translate-y: -60px;
+  }
+
+  .hero-headline {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+  }
+
+  .supporting-subline {
+    display: none;
+  }
+
+  .countdown-zone {
+    --countdown-translate-y: -80px;
+    padding-bottom: 16px;
+  }
+
+  .countdown-num {
+    font-size: 28px;
+  }
+
+  .countdown-num-wrapper {
+    height: 32px;
+  }
+
+  .countdown-separator {
+    height: 24px;
+  }
+}
+
+/* Primary Mobile Layout (All Phones: 320px to 768px in portrait) */
+@media (max-width: 768px) {
+  .app-viewport {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .single-screen-stage {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    padding: 0 clamp(16px, 4.5vw, 24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  /* Zone 1: Mobile Header - Moved Down With Elegant Top Clearance */
+  .brand-header {
+    width: 100%;
+    padding-top: max(52px, calc(env(safe-area-inset-top, 0px) + 32px));
+    padding-bottom: clamp(6px, 1vh, 12px);
+    margin: 0 auto;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .brand-identity-wrapper {
+    gap: 4px;
+  }
+
+  .brand-logo-image-box {
+    max-width: clamp(160px, 44vw, 205px);
+    margin: 0 auto;
+  }
+
+  /* Zone 2: Mobile Hero Typography - Elevated Completely Above Head */
+  .hero-center-zone {
+    --hero-translate-y: clamp(-130px, -16vh, -95px);
+    width: 100%;
+    max-width: 440px;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0 8px;
+    transform: translateY(var(--hero-translate-y));
+    flex-shrink: 0;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.35rem, 8.8vw, 3.1rem);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin-bottom: 0;
+    max-width: min(94vw, 420px);
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow:
+      0 2px 24px rgba(0, 0, 0, 0.75),
+      0 0 35px rgba(247, 241, 229, 0.18);
+  }
+
+  .headline-lead {
+    display: block !important;
+    white-space: nowrap !important;
+  }
+
+  .headline-tail {
+    display: block !important;
+    margin-top: clamp(2px, 0.6vh, 6px);
+  }
+
+  /* Zone 3: Bottom Countdown (Chest Level) & Waitlist CTA (Below Legs) */
+  .portal-bottom-zone {
+    display: contents !important;
+  }
+
+  .countdown-zone {
+    --countdown-translate-y: clamp(-275px, -33vh, -220px) !important;
+    transform: translateY(var(--countdown-translate-y)) !important;
+    padding-bottom: 0 !important;
+    width: 100%;
+  }
+
+  .countdown-eyebrow {
+    margin-bottom: clamp(8px, 1.4vh, 12px);
+    gap: 8px;
+  }
+
+  .countdown-eyebrow-line {
+    width: clamp(16px, 4vw, 28px);
+  }
+
+  .countdown-eyebrow-text {
+    font-size: clamp(8.5px, 2.2vw, 10px);
+    letter-spacing: 0.22em;
+  }
+
+  .countdown-units-cluster {
+    gap: clamp(6px, 1.8vw, 12px);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .countdown-unit-box {
+    min-width: clamp(42px, 12vw, 54px);
+  }
+
+  .countdown-num-wrapper {
+    height: clamp(34px, 4.5vh, 42px);
+  }
+
+  .countdown-num {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+
+  .countdown-label {
+    font-size: clamp(7.5px, 2vw, 9px);
+    letter-spacing: 0.16em;
+    margin-top: 4px;
+  }
+
+  .countdown-separator {
+    height: clamp(20px, 3vh, 26px);
+    gap: 4px;
+  }
+
+  .separator-line {
+    height: 8px;
+  }
+
+  /* Waitlist Button in Mobile Flow - Positioned Just Below the Person's Legs */
+  .waitlist-trigger-zone {
+    position: absolute !important;
+    bottom: clamp(80px, 12.5vh, 110px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 auto;
+    width: auto;
+    z-index: 20;
+  }
+
+  .waitlist-cta-btn {
+    padding: clamp(11px, 1.5vh, 13px) clamp(22px, 5.5vw, 30px);
+    font-size: clamp(10.5px, 2.7vw, 12px);
+    letter-spacing: 0.18em;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Atmosphere / Music Controls on Mobile */
+  .atmosphere-controls {
+    bottom: max(14px, env(safe-area-inset-bottom, 14px));
+    right: max(14px, env(safe-area-inset-right, 14px));
+    z-index: 30;
+  }
+
+  .atmosphere-btn {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    touch-action: manipulation;
+  }
+
+  /* Modal Mobile Optimization */
+  .waitlist-modal-backdrop {
+    padding: max(14px, env(safe-area-inset-top, 14px)) 14px max(14px, env(safe-area-inset-bottom, 14px));
+    align-items: center;
+  }
+
+  .waitlist-modal-card {
+    max-width: min(440px, calc(100vw - 28px));
+    max-height: calc(100dvh - 28px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: clamp(22px, 3.5vh, 32px) clamp(16px, 4.2vw, 24px);
+    border-radius: 18px;
+  }
+
+  .waitlist-close-btn {
+    top: 12px;
+    right: 12px;
+    padding: 8px;
+  }
+
+  .modal-title {
+    font-size: clamp(20px, 5.2vw, 24px);
+  }
+
+  .modal-subtitle {
+    font-size: clamp(12px, 3.2vw, 13px);
+    line-height: 1.5;
+    max-width: 310px;
+  }
+
+  .waitlist-input {
+    font-size: 16px !important;
+    /* Prevents iOS Safari unwanted auto-zoom */
+    padding: 13px 16px;
+    border-radius: 10px;
+    touch-action: manipulation;
+  }
+
+  .modal-submit-btn {
+    padding: 14px 20px;
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+
+  .modal-error-text {
+    font-size: 11.5px;
+    padding: 7px 10px;
+  }
+}
+
+/* Compact / Narrow Mobile Screens (iPhone SE, Galaxy Fold/Flip outer screen, <= 380px) */
+@media (max-width: 380px) {
+  .single-screen-stage {
+    padding: 0 12px;
+  }
+
+  .brand-logo-image-box {
+    max-width: 150px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.05rem, 8.2vw, 2.35rem);
+    max-width: 330px;
+  }
+
+  .countdown-units-cluster {
+    gap: 4px;
+  }
+
+  .countdown-unit-box {
+    min-width: 38px;
+  }
+
+  .countdown-num {
+    font-size: 23px;
+  }
+
+  .countdown-label {
+    font-size: 7px;
+    letter-spacing: 0.12em;
+  }
+
+  .countdown-separator {
+    height: 18px;
+    gap: 3px;
+  }
+
+  .waitlist-cta-btn {
+    padding: 10px 18px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* Short Heights / Landscape Mobile Viewports (Height <= 680px) */
+@media (max-width: 768px) and (max-height: 680px) {
+  .brand-header {
+    padding-top: max(30px, calc(env(safe-area-inset-top, 0px) + 16px));
+  }
+
+  .brand-logo-image-box {
+    max-width: 145px;
+  }
+
+  .hero-center-zone {
+    --hero-translate-y: clamp(-90px, -14vh, -65px);
+    transform: translateY(var(--hero-translate-y));
+  }
+
+  .hero-headline {
+    font-size: clamp(1.85rem, 5vh, 2.2rem);
+    line-height: 1.1;
+    margin-bottom: 0;
+  }
+
+  .countdown-zone {
+    --countdown-translate-y: clamp(-185px, -26vh, -145px) !important;
+    transform: translateY(var(--countdown-translate-y)) !important;
+  }
+
+  .countdown-eyebrow {
+    margin-bottom: 4px;
+    gap: 6px;
+  }
+
+  .countdown-num-wrapper {
+    height: 28px;
+  }
+
+  .countdown-num {
+    font-size: 22px;
+  }
+
+  .countdown-label {
+    font-size: 7px;
+    margin-top: 2px;
+  }
+
+  .countdown-separator {
+    height: 18px;
+  }
+
+  .waitlist-trigger-zone {
+    bottom: clamp(55px, 9.5vh, 70px) !important;
+  }
+
+  .waitlist-cta-btn {
+    padding: 8px 18px;
+    font-size: 10px;
+    min-height: 38px;
+  }
+
+  .atmosphere-controls {
+    bottom: max(8px, env(safe-area-inset-bottom, 8px));
+    right: max(8px, env(safe-area-inset-right, 8px));
+  }
+
+  .atmosphere-btn {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+}
+
+/* Ultra-Short Viewports / Extreme Landscape (Height <= 520px) */
+@media (max-height: 520px) {
+  .brand-header {
+    padding-top: 6px;
+  }
+
+  .brand-logo-image-box {
+    max-width: 130px;
+  }
+
+  .hero-headline {
+    font-size: 1.35rem;
+  }
+
+  .countdown-eyebrow {
+    display: none;
+  }
+
+  .portal-bottom-zone {
+    gap: 6px;
+    padding-bottom: 6px;
+  }
+
+  .countdown-num-wrapper {
+    height: 24px;
+  }
+
+  .countdown-num {
+    font-size: 18px;
+  }
+
+  .waitlist-cta-btn {
+    padding: 6px 14px;
+    font-size: 9px;
+  }
+}

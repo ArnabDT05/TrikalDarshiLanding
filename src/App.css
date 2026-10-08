@@ -31,6 +31,10 @@
   z-index: 1;
   pointer-events: none;
   background-color: var(--color-midnight-navy);
+  background-image: url('/poster.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Base Video Style for Both Tracks */

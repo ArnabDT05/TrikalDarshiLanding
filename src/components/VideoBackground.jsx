@@ -101,20 +101,22 @@ export default function VideoBackground({ reducedMotion = false }) {
         ref={videoRefA}
         className={`bg-video ${activeVideo === 'A' ? 'video-visible' : 'video-hidden'}`}
         src={seamlessVideo || originalVideo}
+        poster="/poster.webp"
         playsInline
         muted
         autoPlay
         preload="auto"
       />
 
-      {/* Secondary Video Element (Track B - for gapless crossfade) */}
+      {/* Secondary Video Element (Track B - for gapless crossfade, loaded only when needed) */}
       <video
         ref={videoRefB}
         className={`bg-video ${activeVideo === 'B' ? 'video-visible' : 'video-hidden'}`}
         src={seamlessVideo || originalVideo}
+        poster="/poster.webp"
         playsInline
         muted
-        preload="auto"
+        preload="none"
       />
 
       {/* Atmospheric Cinematic Veil: Enhances contrast for central typography */}

@@ -106,6 +106,10 @@ export default function VideoBackground({ reducedMotion = false }) {
         muted
         autoPlay
         preload="auto"
+        controlsList="nodownload noplaybackrate nofullscreen"
+        disablePictureInPicture
+        disableRemotePlayback
+        onContextMenu={(e) => e.preventDefault()}
       />
 
       {/* Secondary Video Element (Track B - for gapless crossfade, loaded only when needed) */}
@@ -117,6 +121,10 @@ export default function VideoBackground({ reducedMotion = false }) {
         playsInline
         muted
         preload="none"
+        controlsList="nodownload noplaybackrate nofullscreen"
+        disablePictureInPicture
+        disableRemotePlayback
+        onContextMenu={(e) => e.preventDefault()}
       />
 
       {/* Atmospheric Cinematic Veil: Enhances contrast for central typography */}

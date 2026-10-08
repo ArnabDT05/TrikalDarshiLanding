@@ -110,6 +110,9 @@ export default function AtmosphereControls() {
         loop
         playsInline
         preload="auto"
+        controlsList="nodownload noplaybackrate"
+        disableRemotePlayback
+        onContextMenu={(e) => e.preventDefault()}
       />
       <button
         type="button"
